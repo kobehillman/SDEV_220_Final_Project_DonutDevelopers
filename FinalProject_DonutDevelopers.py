@@ -8,11 +8,27 @@ import PIL.ImageTk
 from PIL import Image
 import customtkinter
 
+# NEED TO MAKE CALCULATE TOTAL FUNCTION UPDATE/ADD TOTAL - Kobe
+#
+#
+
+
+def calculate_total(quantity, cost, tax_total=0):
+    tax = 0.07
+    subtotal = quantity * cost
+    tax_total = tax_total + subtotal * tax
+    total = subtotal + tax_total
+    return total
+
+ # def display_total():
+
 
 class DonutApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
+
+        bold_font = customtkinter.CTkFont(family='Arabella', size=12, weight='bold')
 
         def exit_app():
             tk.Tk.destroy(self)
@@ -76,7 +92,7 @@ class DonutApp(tk.Tk):
                                                                              "\nJoin us in celebrating the joy of "
                                                                              "simple, delicious"
                                                                              "donuts and more made just for you.",
-                                         font='Helvetica', bg='#ed7dd4')
+                                         font='Helvetica', bg='#f06eaa')
                 about_us_text.pack(pady=20)
 
                 # Loads background image and resizes it
@@ -90,21 +106,37 @@ class DonutApp(tk.Tk):
                 # Loads background image and resizes it
 
         class PlaceOrderPage(DonutApp):
+            # WORK IN PROGRESS
+            #
+            #
+            #
+            #
+
+            # order_total = calculate_total(amount, price)
 
             @staticmethod
             def place_order():
                 place_order_window = tk.Toplevel()
                 place_order_window.iconbitmap("donut.ico")
                 place_order_window.geometry("750x500")
-                place_order_window.title = 'Text'
-                # Create Label & Button(s)
-                place_order_text = tk.Label(place_order_window, text="Place your order here!")
+                place_order_window.configure(bg='#FFFFFF')
+
+                # ADD IMAGES - Kobe
+                sb_one = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly')
+                sb_one.pack()
+
+                price = 1.25
+
+            # Create Label & Button(s)
+                place_order_text = tk.Label(place_order_window, text="Place your order here!", font=bold_font)
                 place_order_text.pack(pady=20)
 
-                order_option_one = tk.Button(place_order_window, text="Glazed Ring", width=20)
-                order_option_one.pack(pady=10)
-                sb_one = tk.Spinbox(place_order_window, from_=0, to=20)
-                sb_one.pack()
+                add_to_order_button = customtkinter.CTkButton(place_order_window, text='Add To Order',
+                                                              fg_color='#f06eaa', hover_color='#11c4ff',
+                                                              font=bold_font,
+                                                              command=lambda: print(calculate_total(int(sb_one.get()),
+                                                                                                    price)))
+                add_to_order_button.place(x=120, y=400)
 
                 order_option_two = tk.Button(place_order_window, text="Sprinkled Ring", width=20)
                 order_option_two.pack(pady=10)
@@ -117,10 +149,12 @@ class DonutApp(tk.Tk):
                 sb_three = tk.Spinbox(place_order_window, from_=0, to=20)
                 sb_three.pack()
 
-                finish_order_button = tk.Button(place_order_window, text="Finish Order", width=20, command=exit_app)
-                finish_order_button.pack(pady=1)
+                finish_order_button = customtkinter.CTkButton(place_order_window, text='Finish Order',
+                                                              fg_color='#f06eaa', hover_color='#35fda6',
+                                                              command=exit_app, font=bold_font)
+                finish_order_button.place(x=300, y=400)
 
-        # prices = {"Glazed Ring": 1.25, "Sprinkled Ring": 1.25, "Chocolate Cake": 1.25}
+    # prices = {"Glazed Ring": 1.25, "Sprinkled Ring": 1.25, "Chocolate Cake": 1.25}
 
         # Changes size of the main window, adds app icon to window, window resizable T/F
         # Sets the title of the main window.
@@ -140,7 +174,7 @@ class DonutApp(tk.Tk):
         self.configure(bg='#FFFFFF')
 
         # Label that displays text on main window
-        welcome_label = tk.Label(self, bg='#11c4ff', text="Welcome to Mary Lou Donuts!", fg='#FFFFFF', font='Helvetica')
+        welcome_label = tk.Label(self, bg='#FFFFFF', text="Welcome to Mary Lou Donuts!", fg='#11c4ff', font=(bold_font, 14, "bold"))
         welcome_label.pack(pady=10)
 
         # Defines Place Order button image
@@ -149,7 +183,7 @@ class DonutApp(tk.Tk):
 
         place_order_button = customtkinter.CTkButton(self, image=place_order_image, text="Place Order",
                                                      command=PlaceOrderPage.place_order, compound='left',
-                                                     fg_color='#f06eaa', hover_color='#11c4ff')
+                                                     fg_color='#f06eaa', hover_color='#11c4ff', font=bold_font)
         place_order_button.pack(pady=5)
 
         # Defines About Us button image
@@ -158,7 +192,7 @@ class DonutApp(tk.Tk):
 
         about_button = customtkinter.CTkButton(self, image=about_us_button_image, text="About Us",
                                                command=AboutUsPage.load_about_us, compound='right', fg_color='#f06eaa',
-                                               hover_color='#11c4ff')
+                                               hover_color='#11c4ff', font=bold_font)
         about_button.pack(pady=5)
 
         # Defines Menu button image
@@ -166,12 +200,12 @@ class DonutApp(tk.Tk):
         menu_button_image = customtkinter.CTkImage(Image.open('menu_button_image.png'), size=(30, 30))
 
         menu_button = customtkinter.CTkButton(self, image=menu_button_image, text="Menu", command=MenuPage.load_menu,
-                                              compound='left', fg_color='#f06eaa', hover_color='#11c4ff')
+                                              compound='left', fg_color='#f06eaa', hover_color='#11c4ff', font=bold_font)
         menu_button.pack(pady=5)
 
         # Adds an "Exit" button that closes the application.
         exit_button = customtkinter.CTkButton(self, fg_color="#E50000", hover_color='#FF0000', text="Exit",
-                                              command=self.destroy)
+                                              command=self.destroy, font=bold_font)
         exit_button.pack(pady=5)
 
 
