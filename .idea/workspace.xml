@@ -77,6 +77,8 @@
       <workItem from="1709499429766" duration="146000" />
       <workItem from="1709526394953" duration="47000" />
       <workItem from="1709582463483" duration="9836000" />
+      <workItem from="1709612145842" duration="413000" />
+      <workItem from="1709614684944" duration="347000" />
     </task>
     <task id="LOCAL-00001" summary="- Added new buttons&#10;- Changed theme&#10;- Changed About Us page&#10;- Added picture on About Us page&#10;- Added logo to main window &#10;- Implemented customtkinter&#10;- Implemented Pillow">
       <option name="closed" value="true" />
@@ -118,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709597447214</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="- Began making changes to the Place Order window.&#10;&#10;- Began working on calculateTotal function&#10;&#10;- Testing SpinBox.get() functionality">
+      <option name="closed" value="true" />
+      <created>1709612536680</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709612536680</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +164,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="- Began making changes to the Place Order window.&#10;&#10;- Began working on calculateTotal function&#10;&#10;- Testing SpinBox.get() functionality" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/donutdev$FinalProject_DonutDevelopers.coverage" NAME="FinalProject_DonutDevelopers Coverage Results" MODIFIED="1709612444081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/donutdev$FinalProject_DonutDevelopers.coverage" NAME="FinalProject_DonutDevelopers Coverage Results" MODIFIED="1709614938833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

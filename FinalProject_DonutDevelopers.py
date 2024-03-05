@@ -22,7 +22,7 @@ def calculate_total(quantity, cost, tax_total=0):
 
 
 def display_total(label, spinbox, cost):
-    label.configure(text=f'${calculate_total(int(spinbox.get()), cost, tax_total=0)}')
+    label.configure(text=f'${calculate_total(int(spinbox.get()), cost, tax_total=0):.2f}')
 
 
 
@@ -136,7 +136,7 @@ class DonutApp(tk.Tk):
                                                         text='Order Subtotal')
                 subtotal_label.place(x=500, y=340)
 
-                total_label = customtkinter.CTkLabel(place_order_window, bg_color='red', height=30, width=100,
+                total_label = customtkinter.CTkLabel(place_order_window, text='$0.00', bg_color='red', height=30, width=100,
                                                      font=(bold_font, 14, "bold"))
                 total_label.place(x=600, y=400)
 
