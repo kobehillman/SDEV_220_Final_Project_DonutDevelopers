@@ -96,7 +96,7 @@ class DonutApp(tk.Tk):
                                                                              "and order online.\n"
                                                                              "\nJoin us in celebrating the joy of "
                                                                              "simple, delicious"
-                                                                             "donuts and more made just for you.",
+                                                                             " donuts and more made just for you.",
                                          font='Helvetica', bg='#f06eaa')
                 about_us_text.pack(pady=20)
 

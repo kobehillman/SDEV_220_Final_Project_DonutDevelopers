@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50c1e30b-13d1-4c17-95bc-fd033e6ad6de" name="Changes" comment="- Began making changes to the Place Order window.&#10;&#10;- Began working on calculateTotal function&#10;&#10;- Testing SpinBox.get() functionality">
-      <change beforePath="$PROJECT_DIR$/FinalProject_DonutDevelopers.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject_DonutDevelopers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,7 @@
       <workItem from="1709482628525" duration="12853000" />
       <workItem from="1709499429766" duration="146000" />
       <workItem from="1709526394953" duration="47000" />
-      <workItem from="1709582463483" duration="4729000" />
+      <workItem from="1709582463483" duration="5840000" />
     </task>
     <task id="LOCAL-00001" summary="- Added new buttons&#10;- Changed theme&#10;- Changed About Us page&#10;- Added picture on About Us page&#10;- Added logo to main window &#10;- Implemented customtkinter&#10;- Implemented Pillow">
       <option name="closed" value="true" />
@@ -101,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709498407694</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Began making changes to the Place Order window.&#10;&#10;- Began working on calculateTotal function&#10;&#10;- Testing SpinBox.get() functionality">
+      <option name="closed" value="true" />
+      <created>1709594741732</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709594741732</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +145,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="- Began making changes to the Place Order window.&#10;&#10;- Began working on calculateTotal function&#10;&#10;- Testing SpinBox.get() functionality" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/donutdev$FinalProject_DonutDevelopers.coverage" NAME="FinalProject_DonutDevelopers Coverage Results" MODIFIED="1709594137321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/donutdev$FinalProject_DonutDevelopers.coverage" NAME="FinalProject_DonutDevelopers Coverage Results" MODIFIED="1709597309991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
