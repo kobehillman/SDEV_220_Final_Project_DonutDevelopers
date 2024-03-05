@@ -22,7 +22,7 @@ def calculate_total(quantity, cost, tax_total=0):
 
 
 def display_total(label, spinbox, cost):
-    label.config(text=f'${calculate_total(spinbox.get(), cost, tax_total=0)}')
+    label.configure(text=f'${calculate_total(int(spinbox.get()), cost, tax_total=0)}')
 
 
 
@@ -145,6 +145,12 @@ class DonutApp(tk.Tk):
                 sb_one.place(x=120, y=300)
 
                 price = 1.25
+
+                # THIS IS A TEST BUTTON FOR TESTING ORDER TOTAL FUNCTIONALITY
+                test_button = customtkinter.CTkButton(place_order_window, text='Test', command=lambda: display_total(total_label,sb_one, price))
+                test_button.place(x=120,y=100)
+
+
 
                 # Create Label & Button(s)
                 place_order_text = tk.Label(place_order_window, text="Place your order here!", bg='#FFFFFF',
