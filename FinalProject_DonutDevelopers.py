@@ -7,6 +7,34 @@ import tkinter as tk
 import PIL.ImageTk
 from PIL import Image
 import customtkinter
+from CTkSpinbox import *
+
+
+def get_label(label, button):
+    if label.cget('text') != '$0.00':
+        button.configure(state='normal')
+    else:
+        button.configure(state='disabled')
+
+
+def reset_cart(label1, label2, label3, spinbox_value1, spinbox_value2, spinbox_value3, spinbox_value4, spinbox_value5, spinbox_value6):
+    label1.configure(text='$0.00')
+    label2.configure(text='$0.00')
+    label3.configure(text='$0.00')
+    spinbox_value1.set(0)
+    spinbox_value2.set(0)
+    spinbox_value3.set(0)
+    spinbox_value4.set(0)
+    spinbox_value5.set(0)
+    spinbox_value6.set(0)
+
+
+def update(value1, value2, value3, value4, value5, value6):
+    return value1.get() + value2.get() + value3.get() + value4.get() + value5.get() + value6.get()
+
+
+def total_spinbox_quantity(*args):
+    return sum(args)
 
 
 # FUNCTION THAT CALCULATES THE ORDER SUBTOTAL
@@ -32,18 +60,18 @@ def calculate_total(quantity, cost, tax_total=0):
 
 
 # FUNCTION THAT DISPLAYS THE ORDER TOTAL
-def display_total(label, spinbox, cost):
-    label.configure(text=f'${calculate_total(int(spinbox.get()), cost, tax_total=0):.2f}')
+def display_total(label, amount, cost):
+    label.configure(text=f'${calculate_total(amount, cost, tax_total=0):.2f}')
 
 
 # FUNCTION THAT DISPLAYS THE ORDER SUBTOTAL
-def display_subtotal(label, spinbox, cost):
-    label.configure(text=f'${calculate_subtotal(int(spinbox.get()), cost):.2f}')
+def display_subtotal(label, amount, cost):
+    label.configure(text=f'${calculate_subtotal(amount, cost):.2f}')
 
 
 # FUNCTION THAT DISPLAYS THE ORDER TAX
-def display_tax(label, spinbox, cost):
-    label.configure(text=f'${calculate_tax(int(spinbox.get()), cost):.2f}')
+def display_tax(label, amount, cost):
+    label.configure(text=f'${calculate_tax(amount, cost):.2f}')
 
 
 class DonutApp(tk.Tk):
@@ -172,6 +200,8 @@ class DonutApp(tk.Tk):
                                                            text='Order Total', font=(bold_font, 14, "bold"))
                 order_total_label.place(x=500, y=402)
 
+
+
                 # CREATES AND PLACES A LABEL THAT DISPLAYS THE ORDER TOTAL AMOUNT
                 total_label = customtkinter.CTkLabel(place_order_window, text='$0.00', fg_color='red', width=100,
                                                      font=(bold_font, 14, "bold"))
@@ -201,17 +231,45 @@ class DonutApp(tk.Tk):
                 # CREATES A VARIABLE THAT STORES THE COST OF OUR DONUTS
                 price = 1.25
 
+                # CONSTRUCTS INT VARIABLE FOR VALUES IN THE SPINBOXES ON THE PLACE ORDER PAGE
+                first_box_value = customtkinter.IntVar(value=0)
+                second_box_value = tk.IntVar(value=0)
+                third_box_value = tk.IntVar(value=0)
+                fourth_box_value = tk.IntVar(value=0)
+                fifth_box_value = tk.IntVar(value=0)
+                sixth_box_value = tk.IntVar(value=0)
+
                 # ADD IMAGES - Kobe
-                sb_one = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly')
-                sb_one.place(x=120, y=250)
+                sb_one = CTkSpinbox(place_order_window, fg_color='#f06eaa', button_hover_color='#11c4ff', button_color='#f06eaa', border_width=2, button_border_width=1, button_border_color='#11c4ff', border_color='#11c4ff', start_value=0, max_value=20, scroll_value=1, height=25, width=100, variable=first_box_value, font=(bold_font, 12))
+                sb_one.place(x=120, y=200)
+
+                sb_two = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly', width=5, wrap=True, textvariable=second_box_value)
+                sb_two.place(x=170, y=250)
+
+                sb_three = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly', width=5, wrap=True, textvariable=third_box_value)
+                sb_three.place(x=220, y=250)
+
+                sb_four = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly', width=5, wrap=True, textvariable=fourth_box_value)
+                sb_four.place(x=270, y=250)
+
+                sb_five = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly', width=5, wrap=True, textvariable=fifth_box_value)
+                sb_five.place(x=320, y=250)
+
+                sb_six = tk.Spinbox(place_order_window, from_=0, to=20, state='readonly', width=5, wrap=True, textvariable=sixth_box_value)
+                sb_six.place(x=370, y=250)
+
+                # sb_amount = total_spinbox_quantity(int(sb_one.get()), int(sb_two.get()), int(sb_three.get()),
+                 #                                  int(sb_four.get()), int(sb_five.get()), int(sb_six.get()))
+
+                # print(sb_amount)
 
                 # THIS IS A TEST BUTTON FOR TESTING ORDER TOTAL FUNCTIONALITY
                 test_button = customtkinter.CTkButton(place_order_window, text='Test',
-                                                      command=lambda: [display_total(total_label, sb_one, price),
-                                                                       display_subtotal(subtotal_amount_label, sb_one,
-                                                                                        price),
-                                                                       display_tax(tax_amount_label, sb_one, price)])
+                                                      command=lambda: [reset_cart(subtotal_amount_label, tax_amount_label, total_label, first_box_value, second_box_value, third_box_value, fourth_box_value, fifth_box_value, sixth_box_value)])
                 test_button.place(x=120, y=100)
+
+                empty_cart_button = customtkinter.CTkButton(place_order_window, state='disabled', text='Empty Cart', height=5, width=20, fg_color='#f06eaa', hover_color='#FF0000', font=bold_font, command=lambda: [reset_cart(subtotal_amount_label, tax_amount_label, total_label, sb_one, second_box_value, third_box_value, fourth_box_value, fifth_box_value, sixth_box_value), empty_cart_button.configure(state='disabled')])
+                empty_cart_button.place(x=625, y=300)
 
                 # CREATES AND PLACES A LABEL THAT DISPLAYS THE TEXT 'Place your order here!'
                 place_order_text = tk.Label(place_order_window, text="Place your order here!", bg='#FFFFFF',
@@ -219,14 +277,12 @@ class DonutApp(tk.Tk):
                 place_order_text.pack(pady=20)
 
                 # CREATES AND PLACES A 'Add To Order' BUTTON THAT ALLOWS THE USER TO ADD AN ITEM TO THE ORDER
-                add_to_order_button = customtkinter.CTkButton(place_order_window, text='Add To Order',
+                add_to_order_button = customtkinter.CTkButton(place_order_window, text='Add To / Update Order',
                                                               fg_color='#f06eaa', hover_color='#11c4ff',
                                                               font=bold_font,
-                                                              command=lambda: [print(calculate_total(int(sb_one.get()),
-                                                                                                     price),
-                                                                                     display_subtotal(
-                                                                                         subtotal_amount_label, sb_one,
-                                                                                         price))])
+                                                              command=lambda: [update(first_box_value, second_box_value, third_box_value, fourth_box_value, fifth_box_value, sixth_box_value), display_total(total_label, update(first_box_value, second_box_value, third_box_value, fourth_box_value, fifth_box_value, sixth_box_value), price),
+                                                                       display_subtotal(subtotal_amount_label, update(first_box_value, second_box_value, third_box_value, fourth_box_value, fifth_box_value, sixth_box_value),
+                                                                                        price), display_tax(tax_amount_label, update(first_box_value, second_box_value, third_box_value, fourth_box_value, fifth_box_value, sixth_box_value), price), get_label(total_label, empty_cart_button)])
                 add_to_order_button.place(x=120, y=400)
 
                 # CREATES AND PLACES A LABEL THAT DISPLAYS THE TEXT '* Required'
@@ -262,6 +318,8 @@ class DonutApp(tk.Tk):
                                                             font=(bold_font, 12, 'bold'))
                 phone_number_entry.place(x=405, y=350)
 
+                customer_details = {'name': first_name_entry.get(), 'email': email_entry.get()}
+
                 # CREATES AND PLACES A BUTTON THAT ALLOWS THE USER TO COMPLETE THEIR ORDER AND SEND THEM TO THE ORDER
                 # CONFIRMATION WINDOW
                 finish_order_button = customtkinter.CTkButton(place_order_window, text='Place Order',
@@ -269,6 +327,7 @@ class DonutApp(tk.Tk):
                                                               command=exit_app, font=bold_font, state='disabled',
                                                               text_color_disabled='#BABABA')
                 finish_order_button.place(x=300, y=400)
+
 
         # prices = {"Glazed Ring": 1.25, "Sprinkled Ring": 1.25, "Chocolate Cake": 1.25}
 
@@ -325,6 +384,7 @@ class DonutApp(tk.Tk):
         exit_button = customtkinter.CTkButton(self, fg_color="#E50000", hover_color='#FF0000', text="Exit",
                                               command=self.destroy, font=bold_font)
         exit_button.pack(pady=5)
+
 
 
 def main():
